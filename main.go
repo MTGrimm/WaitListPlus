@@ -28,11 +28,23 @@ func sendEmail(message string) {
   if err != nil {
     fmt.Println(err)
   }
+
+  err = smtp.SendMail(
+    "smtp.gmail.com:587",
+    auth,
+    "aryan.timilsina195@gmail.com",
+    []string{"bsaleh1@ualberta.ca"},
+    []byte(message),
+  )
+
+  if err != nil {
+    fmt.Println(err)
+  }
 }
 
 func main() {
   courses := make([]string, 0)
-  fmt.Print("PLease enter in courses in the following format 'NAME-101', and exit to exit: ")
+  fmt.Print("Please enter in courses in the following format 'NAME-101', and exit to exit: ")
   for true {
     var input string;
     fmt.Scanf("%s", &input)
